@@ -1,0 +1,159 @@
+7일차
+
+데이터 타입 = 기본타입 + 참조타입 
+
+기본타입 = 변수에 직접적으로 값이 입력되어있음 = 변수, 값 둘다 Stack
+
+참조타입 = 값은 다른 메모리에 저장되어있고 변수에는 해당 번지값이 들어가며 이를 참조해 데이터를 불러옴 
+= 변수와 주소는 Stack, 값은 Heap 
+
+메모리 영역(Runtime Data) = Method, Stack, Heap
+
+Method 영역 = 정적(Static) 필드, 사수, 메소드 코드, 생성자 코드
+
+Heap 영역 = 만들었다 지웠다 객체, 참조타입 변수의 값
+
+Stack 영역 = 축적되는 영역, 변수, 기본 타입 변수의 값
+
+Class = 일종의 데이터 타입
+참조타입변수의 위치 = Stack
+참조타입변수에 입력된 번지 = Heap 
+
+String name = "승탁"
+= Stack 영역에 저장된 name 이라는 참조타입 변수의 값은 
+승탁 이라는 문자열이 저장된 Heap 영역의 번지이며 이를 참조해 문자열 값을 가져옴
+
+기본타입 비교연산
+==, != >> 값이 같은지 비교함
+
+참조타입 비교연산  
+==, != >> 동일한 객체(주소)를 참조하는지 여부를 비교함
+.equals() >> 문자열의 리터럴이 같은지 비교함
+
+
+nil, null = 참조타입 주소값의 초기값, 변수는 존재하지만 Heap 영역에 참조할 주소가 없는 상태 
+어떤 주소도 가리키지 않는 참조값
+
+Pointer = heap영역 메모리에 대한 번지수 
+NullPointerException = Pointer를 따라갔더니 방이 없다(Null이다) 
+new(생성자) = Heap 영역에 방을 생성해주는 연산자
+
+참조타입 literal = 리터럴이 같은 경우 같은 객체를 참조함
+new 연산자를 통해 생성되는 경우에는 새로운 번지에 방을 잡기 때문에 서로 다른 객체를 참조함
+
+확인문제
+1. O,O,O,X
+2. O,O,X,O
+3. O,X,O,O
+4. O,O,O,X
+5. True, False, True, True,True
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+배열
+데이터가 담긴 항목에 인덱스로 번호를 부여해 놓은 자료구조
+배열의 항목은 1부터, index는 0부터 
+
+배열 초기화 방법 
+
+직접 항목에 리터럴을 지정
+int[] scores = {83, 93, 73};
+
+배열의 항목 수만 지정 << 초기값 = null, 0, 0.0 
+int[] scores1 = new int[3]; 
+
+//scores1[0] = 83; << 나중에 리터럴 입력
+//scores1[1] = 93;
+//scores1[2] = 73;
+
+ArrayIndexOutOfBoundsException: 배열의 인덱스 범위를 벗어난 예외
+
+
+코딩할 때는 항상 확장성을 고려할 것
+Scanner scan = new Scanner(System.in);
+		System.out.print("생성할 정수 배열의 개수: ");
+		int num = scan.nextInt();  
+		int[] scores1 = new int[num];
+
+for(i=0; i<length.scores1; i++)
+
+str.length() = 문자열 하나의 길이
+str.length = 문자열 배열이 차지하는 메모리의 길이 
+
+
+배열의 값을 for문을 이용해 다양한 방식으로 입력 가능
+
+int[] lotto = new int[6];
+Random ran = new Random();
+
+for (int i=0; i<lotto.length; i++) {
+		lotto[i] = ran.nextInt(45)+1;
+		System.out.println(lotto[i]);
+		}
+
+*향상된 for문 (사용 빈도 매우 높음)
+배열의 항목 수 만큼 반복하는 for문 
+i번째 루프마다 i번째 항목 값을 변수에 저장하여 사용 
+
+for(각 항목 저장 변수 : 배열변수)
+
+for(double val : array) {
+	sum = sum + val;
+		}
+
+for(double val : array) {
+	if(max < val){
+		max = val;
+	}
+}
+이런 식으로 각 항목의 합을 구하거나 if문과 함께 사용하여 각 항목의 값을 비교할 수도 있다
+
+JSP
+
+<form>
+웹 페이지에서 사용자로부터 데이터를 입력받거나 서버로 데이터를 전송하기 위한 구성 요소 
+주로 사용자에게 텍스트 입력, 선택 목록, 체크박스 등의 다양한 입력 항목을 제공하고, 이를 서버로 제출하여 처리하는데 쓰임
+
+<form action = "파일 이름">
+사용자가 데이터를 제출했을 때 어떤 서버 측 스크립트나 프로그램으로 데이터를 전송할지를 지정함
+
+
+<input> 
+사용자로부터 데이터를 입력받을 수 있는 다양한 형태의 입력 요소를 생성하는 데 사용함
+type = text, submit, reset, name
+type = 입력 필드의 유형 
+name = 입력 필드의 이름
+reset = 입력한 내용을 초기화하는 유형
+
+text유형 = 사용자로부터 텍스트를 입력받을 수 있는 상자를 나타냄
+
+<% request.getParameter("") %> = <input> name="" 값을 불러옴
+<%= request.getParameter("name") %> = <input> name="" 값을 출력함
+<input> name= << 매개변수와 같은 역할
+
+JSP에서 for 문을 작성할 때는 실행문 괄호를 열때 닫고 다시 실행문을 닫는 중괄호때 다시 열고 닫는다
+<% for(~~~)	{ 
+%> 실행문 작성
+<% } %>
+
+<%=str %> X <%=i %>=<%=i* Integer.parseInt(str)%>
+
+<%=변수 %> = 변수 값 불러오기
+<%=i* Integer.parseInt(str)%> = 정수 변수 i와 문자열 변수 str의 연산은 불가능 하므로 타입을 맞춰줘야함
+
+JSP 주석달기 = 단축키: 컨트롤 + 쉬프트 + /
+<!-- -->
+<%-- --%>
+<% //내용 %>
+<% /* 내용 */ %>
+
+가끔은 오류가 없는데 오류가 생기기도 한다
+
+웹프로그래밍 = 프로그래밍언어와 HTML을 합쳐서 웹페이지를 만드는 것 
+웹프로그래밍은 다양한 언어들을 활용하므로 고려해야할 부분이 굉장히 많고 시간이 오래걸린다
+
+
+필드 = 메소드 밖 영역
+
+JSP에 JAVA Static Field에 선언한 변수 불러오는 법 
+프로젝트 폴더> Java Resources > src/main/java > package 생성 > class 생성 > public static + 선언 후
+<%@page import ="web0108.Student"%> 첨부 > 이후 사용 가능

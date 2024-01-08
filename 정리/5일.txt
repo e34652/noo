@@ -1,0 +1,304 @@
+5일
+
+깃허브 사용법 
+.gitignore = 깃허브 업로드 예외 
+파일 이름
+test* << test가 포함된 파일
+*.exe << exe 확장자 파일
+
+System.out.print() = 시스템의 출력장치로 괄호안의 내용을 출력하라
+
+형식문자열
+printf("%-10d", 3334);
+
+여백 관련
+%-10d = 3334 뒤에 여백 10개
+%10d =  3334 앞에 여백 10개
+%010d = 3334 앞에 여백 10개를 0으로 채움
+
+%0.6f, 3.141592 =
+
+System.in.read() = 시스템의 입력장치에서 입력된 키코드를 읽어라
+97=a 13=엔터(캐리지리턴) 10=엔터(LF)
+
+Scanner scan = new Scanner(System.in);
+= scan이라는 Scanner 변수를 생성하라 시스템의 입력 장치를 읽는
+
+정적 메서드와 동적 메서드의 차이
+
+
+static 메소드와 인스턴스 메소드의 차이는 인스턴스 변수 사용 유무로 나뉜다.
+
+정적 메서드 (Static Method):
+정적 메서드는 클래스 수준에 속합니다. 즉, 특정 객체의 인스턴스에 속하지 않고 클래스 자체에 속합니다.
+객체의 생성과 무관하게 호출됩니다. 객체가 생성되지 않아도 클래스 이름을 통해 직접 호출할 수 있습니다.
+this 키워드를 사용할 수 없습니다. 정적 메서드 내에서는 인스턴스 변수에 직접 접근할 수 없습니다.
+주로 유틸리티 메서드나 헬퍼 함수 등과 같이 객체의 특정 인스턴스에 종속되지 않는 기능을 제공하는 데 사용됩니다.
+
+static 메소드란?
+메소드 앞에 static가 붙은 메소드이다.
+객체 생성 없이 호출이 가능한 메소드
+
+static 메소드(클래스 메소드)
+객체 생성 없이 '클래스 명.메소드 명()'으로 호출이 가능하다.
+인스턴스 멤버와 관련되지 않은 작업을 한다.
+메소드 내에서 인스턴스 변수를 사용할 수 없다.
+인스턴스 메소드와 달리 인스턴스 변수가 필요 없으므로 객체를 생성하지 않고도 호출할 수 있다.
+
+동적 메서드 (Non-Static 또는 Instance Method):
+동적 메서드는 객체 인스턴스에 속합니다. 특정 객체의 동작을 나타내며, 해당 객체의 상태에 접근할 수 있습니다.
+객체가 생성되어야 호출됩니다. 객체가 생성된 후에만 해당 객체의 동적 메서드를 호출할 수 있습니다.
+this 키워드를 사용할 수 있습니다. 동적 메서드 내에서는 객체의 인스턴스 변수에 직접 접근할 수 있습니다.
+주로 객체의 상태를 조작하거나 객체의 특정 기능을 수행하는 데 사용됩니다
+
+인스턴스 메소드
+인스턴스 생성 후, '참조 변수.메소드 명()'으로 호출한다.
+인스턴스 멤버와 관련된 작업을 한다.
+메소드 내에서 인스턴스 변수를 사용할 수 있다.
+인스턴스 변수를 이용해서 작업을 하므로 변수의 묶음인 객체를 생성해야 인스턴스 메소드를 호출할 수 있다.
+
+그러면 언제 static을 붙이면 좋은가?
+메소드의 경우
+인스턴스 변수를 사용하지 않는 경우에 static 붙인다.
+  int add() { return a + b }  // a와 b는 인스턴스 변수이므로 static을 붙이지 않는다.
+  static int add(int a, int b) { return a + b } // a, b는 로컬(지역) 변수이므로 static을 붙인다. 
+변수의 경우
+속성(변수) 중에서 인스턴스 변수(개별 속성)는, static을 붙이지 않는다.
+클래스 변수(공통 속성)는 static을 붙인다.
+
+※ 호출의 차이
+static 메소드는 인스턴스 변수를 호출할 수 없지만 인스턴스 메소드는 static 변수를 호출할 수 있다.
+static 메소드는 인스턴스 메소드를 호출할 수 없지만 인스턴스 메소드는 static 메소드를 호출할 수 있다.
+왜 static 메소드는 인스턴스 멤버(인스턴스 변수, 인스턴스 메소드)를 사용할 수 없는가?
+-> 인스턴스 메소드를 이용하려면 인스턴스 변수를 사용하므로 객체 생성이 필요하다.
+그러나 static 메소드는 항상 호출이 가능해야하는데, 객체가 있을지 없을지 모르기 때문이다.
+static 메소드끼리, 인스턴스 메소드끼리는 호출이 가능하다.
+
+
+
+
+Github Branch
+branch = 나뭇가지 
+- 하나의 프로젝트 파일을 여러 사람이 수정할 때 갈라지는 각각의 ID
+
+Scanner 클래스
+메인 메서드에서 다른 메서드를 호출하듯 scanner라는 class를 호출하여 메서드의 일부로 사용 = 객체지향
+
+
+변수를 선언하는 순간 메모리 배정 
+해당 블록 벗어나는 순간 메모리 삭제
+
+
+
+sum 메서드 내부에서 Scanner scanner 를 하면 오류가 나는 이유 = 해당 블록에서는 초기화 된 적이 없기 때문 = O 
+통째로 메서드를 호출할 수는 있지만 따로 호출되거나 매개변수로 입력되지 않으면 
+다른 메서드에 있는 함수만 따로 불러올 수는 없다
+
+매개변수로 입력받을 때는 초기화를 안해도 되는 이유? - 이미 초기화 된 변수를 매개변수로 입력받기 때문
+이미 초기화가 된 변수를 다른 메서드에서 받아오기 때문 하지만 선언은 해야한다
+
+main 메서드에서는 sum(scanner)라고만 해도 되는 이유 
+해당 메서드 내에서는 scanner 초기화가 되어있기 때문? = O
+
+
+
+scanner 클래스의 개념 
+메인 메서드에서 다른 메서드를 호출하여 완성하였듯  메서드에 scanner라는 class를 호출하여 메서드의 일부로 사용이 가능한가?
+메서드 개념
+
+라인 수와 상관없이 보기좋고 이해잘되면 장땡
+
+
+
+변수를 선언하는 순간 메모리 배정 
+해당 블록 벗어나는 순간 메모리에서 삭제
+
+메인이 시작점 메서드를 호출하는 순간 메모리에 배정
+
+매개변수로 입력받을 때는 초기화를 안해도 되는 이유? - 받아서 주겠다 = 이미 초기화가 된 변수를 다른 메서드에서 받아오기 때문 
+메서드 내부에서 Scanner scanner 를 하면 안되는 이유 = 해당 블록에서는 초기화 된 적이 없기 때문 ?
+
+main 메서드에서는 sum(scanner)라고만 해도 되는 이유 
+해당 메서드 내에서는 scanner 초기화가 되어있기 때문?
+
+매개변수를 보내는 데이터의 타입이 받는 쪽에서 선언된 변수의 데이터 타입보다 클 경우 에러발생
+업무내용과 용도에 어울리는 구조를 고민할 것
+
+통합하는 대신 조금 더 복잡한 코드
+분할하는 대신 조금 더 간결한 코드
+
+조건문은 예외가 생길 수 있기 때문에 오작동의 가능성이 높음 
+따라서 단순하고 분명한 코드가 좋은 상황이 있음
+
+연산 우선순위
+연산의 방향
+연산자
+&& || ^ !
+
+&와 &&, |와 || 차이
+
+괄호를 사용해 우선순위를 명확하게 표시하면 좋음
+괄호는 왼쪽부터 우선적으로  
+% 연산자를 이용해 배수 찾기
+
+기본타입이란
+char 타입 리터럴연산이 가능한 이유 'A' - 'B'
+
+double float 정확도 차이는 어째서 나는가 = 표현하는 소수자릿수 차이
+부동소수점 방식이란
+소수점 이하의 값을 표현하는 방식
+부호(음,양) + 지수(소수점 위치)+ 가수(유효숫자)
+
+
+
+
+0.1을 정확히 표현하지 못하는이유  - 연산 단위가 비트(2진수)이기 때문
+0.1을 2진수로 표현할 경우 무한소수가 됨
+이진법에서는 1/2 1/4 1/8 ... 2의 제곱이 기본 단위기 때문이므로
+0.1 = 1/10 을 정확하게 나타내기 어렵다
+
+BigDecimal = 고정 소수점 연산이 가능하도록 설계된 클래스 << 10진법으로 계싼
+
+
+for while do-while은 기능적으로 같으나 문법과 구조에 차이가 있음 
+
+for = 초기화식, 조건식, 증감식을 한번에 작성
+while, do-while = 증감식의 위치가 자유로움
+do-while = 실행문을 적어도 한번은 실행함
+
+
+
+
+
+package jan.day03;
+
+import java.util.Scanner;
+
+public class Integration {
+
+public static String registration() {
+// 회원가입
+
+Scanner scanner = new Scanner(System.in);
+
+System.out.println("[회원 가입]");
+System.out.println("1. 사용할 ID: __________");
+System.out.println("2. 사용할 PW: __________");
+
+System.out.println("[입력한 내용]");
+
+String id = scanner.nextLine();
+System.out.println("ID : " + id);
+
+String pw = scanner.nextLine();
+System.out.println("PW : " + pw);
+
+String regIdPw = id + pw;
+return regIdPw;
+
+}
+
+public static String logIn() {
+// 로그인 입력한 ID PW를 리턴
+Scanner scanner = new Scanner(System.in);
+
+System.out.print("ID: ");
+String logInId = scanner.nextLine();
+
+System.out.print("PW: ");
+String logInPw = scanner.nextLine();
+
+String logInIdPw = logInId + logInPw;
+return logInIdPw;
+}
+
+public static long banking() {
+// 은행업무 업무 종료 후 남은 잔고 리턴
+boolean run = true;
+long balance = 0;
+Scanner scanner = new Scanner(System.in);
+
+while (run) {
+System.out.println("--------------------------------");
+System.out.println("1.예금 | 2.출금 | 3.잔고 | 4.종료");
+System.out.println("--------------------------------");
+System.out.println("선택> ");
+
+int choice = scanner.nextInt();
+
+if (choice == 1) {
+System.out.printf("얼마나 예금하시겠습니까?");
+long money = scanner.nextInt();
+balance = balance + money;
+System.out.printf("예금액>%d\n\n", balance);
+continue;
+} else if (choice == 2) {
+System.out.printf("얼마나 출금하시겠습니까?");
+long money = scanner.nextInt();
+balance = balance - money;
+System.out.printf("출금액>%d\n\n", balance);
+continue;
+} else if (choice == 3) {
+System.out.printf("잔고>%d\n\n", balance);
+continue;
+} else if (choice == 4) {
+System.out.println("프로그램 종료");
+break;
+}
+}
+return balance;
+}
+
+public static void main(String[] args) {
+// 초기화면
+Scanner scanner = new Scanner(System.in);
+int nowLoading = 0;
+boolean logInStatus = false;
+
+String userAccount = "";
+String userIdPw = "";
+String inputIdPw = "";
+
+long inputBalance = 0;
+
+while (true) {
+
+if (nowLoading == 0) {
+System.out.println("-------------------------------------");
+System.out.println("1.회원가입 | 2.로그인 | 3.은행업무 | 4.종료");
+System.out.println("-------------------------------------");
+System.out.println("선택> ");
+
+nowLoading = scanner.nextInt();
+}
+if (nowLoading == 1) {// 1번시 회원가입 절차 로딩
+userIdPw = registration();
+userAccount = userIdPw + "account";
+nowLoading = 0;
+
+} else if (nowLoading == 2) {// 2번시 로그인 절차 로딩
+inputIdPw = logIn();
+
+if (inputIdPw.equals(userIdPw)) {// ID/PW 일치하면 로그인상태
+logInStatus = true;
+System.out.println("로그인 성공");
+nowLoading = 0;
+} else {
+System.out.println("로그인 실패 다시 시도해주세요");
+nowLoading = 0;
+}
+} else if (nowLoading == 3 && logInStatus == true) {// 3번 + 로그인 = 은행업무 로딩
+inputBalance = banking();
+System.out.println("잔액: " + inputBalance);
+nowLoading = 0;
+}
+else if (nowLoading == 3 && logInStatus != true) {
+System.out.println("로그인을 해주세요");
+nowLoading = 0;
+} else if (nowLoading == 4) {
+System.out.println("종료합니다");
+break;
+}
+}
+}
+}
