@@ -110,29 +110,55 @@ for(double val : array) {
 JSP
 
 <form>
-웹 페이지에서 사용자로부터 데이터를 입력받거나 서버로 데이터를 전송하기 위한 구성 요소 
-주로 사용자에게 텍스트 입력, 선택 목록, 체크박스 등의 다양한 입력 항목을 제공하고, 이를 서버로 제출하여 처리하는데 쓰임
+사용자로부터 입력을 받거나 서버로 데이터를 전송하는 역할 
+주로 사용자와 상호작용하는 부분을 그룹화하고 이를 서버로 전송함
 
-<form action = "파일 이름">
+<form action ="" method ="" enctype="">
 사용자가 데이터를 제출했을 때 어떤 서버 측 스크립트나 프로그램으로 데이터를 전송할지를 지정함
 
+action 
+-폼이 제출될 때 데이터를 보낼 서버 측 스크립트의 URL을 지정
+
+method
+-데이터를 전송하는 방식을 지정함 
+-일반적으로 "get" 또는 "post" 중에 선택함 
+get = 데이터를 URL에 포함해 전송 
+post = 데이터를 요청 본문에 추가하여 전송
+
+enctype
+-폼 데이터를 서버로 전송할 때 사용되는 인코딩 방식을 지정 
+-주로 파일 업로드와 관련이 있음
+
+<form action="process_data.php" method="post"> =  "process_data.php"로 "post" 방식으로 데이터를 전송
 
 <input> 
-사용자로부터 데이터를 입력받을 수 있는 다양한 형태의 입력 요소를 생성하는 데 사용함
-type = text, submit, reset, name
-type = 입력 필드의 유형 
-name = 입력 필드의 이름
-reset = 입력한 내용을 초기화하는 유형
+사용자로부터 데이터를 입력받을 수 있는 다양한 형태의 입력 필드를 생성하는 데 사용함
 
-text유형 = 사용자로부터 텍스트를 입력받을 수 있는 상자를 나타냄
+양식
+<input type="입력 필드유형" name="입력 필드 이름" value="입력 필드의 초기값 또는 사용자에게 표시되는 값">
+
+<input type="text" name="username" value="1"> 
+= 초기 값이 1인 username 이라는 이름으로 값이 서버에 전송되는 텍스트 입력 창을 생성해줘
+
+type = 입력 필드의 유형 
+-text, password, radio, checkbox, submit, reset, select 등
+
+text = 텍스트 입력 창
+password = 입력한 내용이 다른 마스킹 되는 창 (*, ● 등)
+checkbox = 체크박스 생성
+select + <option> = 드롭다운 목록 생성
+radio = 라디오 버튼 생성  
+submit = 제출버튼 생성
+reset = 입력 내용을 초기화하는 버튼 생성
+
 
 <% request.getParameter("") %> = <input> name="" 값을 불러옴
-<%= request.getParameter("name") %> = <input> name="" 값을 출력함
-<input> name= << 매개변수와 같은 역할
+클라이언트에서 서버로 전송된 HTTP 요청에서 ""이라는 이름(name값)의 매개변수 값을 불러옴
 
-JSP에서 for 문을 작성할 때는 실행문 괄호를 열때 닫고 다시 실행문을 닫는 중괄호때 다시 열고 닫는다
+JSP에서 JAVA 언어로 for 문을 작성할 때는 실행문을 기준으로 열고 닫아 실행문을 명확히 구분할 수 있게 한다
 <% for(~~~)	{ 
-%> 실행문 작성
+%> 
+실행문
 <% } %>
 
 <%=str %> X <%=i %>=<%=i* Integer.parseInt(str)%>
