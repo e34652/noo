@@ -8,7 +8,7 @@ public class Project1 {
 		Scanner scanner = new Scanner(System.in);
 		
 		boolean run = true;
-		boolean run2 = true;
+		boolean run2 = false;
 		boolean logInStatus = false;
 		
 		Account acc = null;
@@ -58,6 +58,9 @@ public class Project1 {
 				
 				break;
 			case 3:
+				if(logInStatus) {
+					run2 = true;
+				}
 				// 예금 출금
 				System.out.println("예금 출금");
 				while (run2) {
