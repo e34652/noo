@@ -14,6 +14,7 @@ public class SoloEx {
 		boolean run1 = true;
 
 		Solo[] solo = new Solo[3];
+		
 
 		while (run1) {
 	
@@ -48,13 +49,15 @@ public class SoloEx {
 							System.out.println("로그인 성공");
 							logInStatus = true;
 							idNum = i;
-
 							break;
 						}
+					
 					}
+					
 				}
-				
+			if(!logInStatus)
 				System.out.println("회원 정보를 확인해주세요");
+				
 				break;
 
 			case 2: // 회원가입
@@ -63,10 +66,14 @@ public class SoloEx {
 					break;
 				}
 				
+				if (userCount == solo.length) {
+					System.out.println("회원 모집이 마감되었습니다");
+					break;
+				}
 				
 
 				System.out.println("회원가입을 시작합니다");
-				solo[userCount] = new Solo(); 
+				solo[userCount] = new Solo();
 				
 				System.out.println("사용하실 ID를 입력해주세요");
 				solo[userCount].id = scan.nextLine();
@@ -74,6 +81,7 @@ public class SoloEx {
 				System.out.println("사용하실 PW를 입력해주세요");
 				solo[userCount].pw = scan.nextLine();
 
+				System.out.println("회원가입이 완료되었습니다");
 				System.out.println(solo[userCount]);
 
 				userCount += 1;
@@ -138,8 +146,10 @@ public class SoloEx {
 				System.out.println("종료합니다");
 				run1 = false;
 				break;
+				
+				default :
+					System.out.println("다시 입력해 주세요");
 			}
-
 		}
 	}
 }

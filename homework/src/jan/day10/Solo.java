@@ -22,7 +22,7 @@ public class Solo {
 
 	@Override
 	public String toString() {
-		return "Solo [id=" + id + ", pw=" + pw + ", balance=" + balance + "]";
+		return "회원 ID: " + id + " 회원 PW: " + pw + " 계좌 잔고: " + balance;
 	}
 	
 }
