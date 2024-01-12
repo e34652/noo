@@ -3,8 +3,8 @@ package jan.day11;
 public class Bubble2 {
 
 	public static void bubble(int[] b) {// 뒤에서부터 비교
-		for (int i = 0; i < b.length; i++) {
-			for (int j = b.length - 1; j > i; j--) {
+		for (int i = 0; i < b.length-1; i++) {
+			for (int j = b.length - 1-i; j > i; j--) {
 				if (b[j] < b[j - 1]) {
 					int tmp = b[j];
 					b[j] = b[j - 1];
@@ -17,7 +17,7 @@ public class Bubble2 {
 		}
 	}
 /*
-    static void bubbleSort(int[] arr) {//한칸 앞에서부터 뒤에꺼랑 비교 
+    static void bubbleSort(int[] arr) {//한칸 앞에서부터 뒤에꺼랑 비교 한칸 앞에서부터 비교하기때문에 n에-1을 안해도 됨
         int n = arr.length;
         int temp = 0;
         for (int i = 0; i < n; i++) {
