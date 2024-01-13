@@ -1,4 +1,4 @@
-package com.project;
+package jan.day12;
 
 public class Account { // 회원 정보 
 	private String accountId;

@@ -6,8 +6,8 @@ public class CarEx {
 		
 		myCar.setGas(5); // setGas()메소드 호출
 		
-		boolean gasState = myCar.isLeftGas();
-		if(gasState) {
+		boolean gasState = myCar.isLeftGas();// 가스가 있는지 없는지를 리턴해 boolean 변수 gasState에 대입 
+		if(gasState) { // 변수를 활용한 조건문 
 			System.out.println("출발합니다");
 			myCar.run(); // run() 메소드 호출
 		}
