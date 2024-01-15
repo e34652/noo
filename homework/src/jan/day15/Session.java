@@ -1,15 +1,20 @@
-package jan.day12;
+package jan.day15;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 
 public class Session {
 	private boolean run;
 	private boolean run2;
 	private LoginInput loginInput;
-	private	LoginState loginState = LoginState.OFFLINE; // 열거타입(클래스) + 변수 
-	private MenuState menuState = MenuState.TOP; // String a; 와 비슷한 개념의 선언 
-	private Account account; 
-	// 필드 선언은 해당타입의 데이터를 저장하고 해당 클래스의 인스턴스를 참조할 수 있는 능력을 부여한다	 
-	// Account account = account 라는 필드에 Account 타입의 데이터를 저장할 수 있다
-	// Account 타입의 인스턴스를 참조하며 해당 인스턴스 내부의 메소드도 호출할 수 있다 
+	private	LoginState loginState = LoginState.OFFLINE;
+	private MenuState menuState = MenuState.TOP;
+	private Account account;
+
 	
 	public Session(boolean run, boolean run2, LoginInput loginInput, Account account) {
 
@@ -17,9 +22,25 @@ public class Session {
 		this.run2 = run2;
 		this.loginInput = loginInput;
 		this.account = account;
+		
+	}
+	
+	public void save() throws IOException{
+			FileOutputStream fos = new FileOutputStream("C:/temp/acc.db"); // 저장 경로
+			ObjectOutputStream oos = new ObjectOutputStream(fos); //
+			oos.writeObject(account);
+			oos.flush();
+			oos.close();
+		}
+
+	public void load() throws IOException, ClassNotFoundException {
+		
+		FileInputStream fis = new FileInputStream("C:/temp/acc.db"); // 저장 경로
+		ObjectInputStream ois = new ObjectInputStream(fis); //
+		this.account = (Account) ois.readObject();
+		
 	}
 
-	
 	public String getLoginInputId() {
 		return loginInput.getInputId();
 	}
@@ -75,7 +96,7 @@ public class Session {
 		return menuState;
 	}
 
-	public void setMenuState(MenuState menuState) {//
+	public void setMenuState(MenuState menuState) {
 		if (menuState == MenuState.BANKING) {
 			run2 = true;
 		} else if (menuState == MenuState.SYSTEM_OFF) {

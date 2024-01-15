@@ -8,7 +8,7 @@ public class LottoEx {
 
 		// 로또 번호를 저장할 변수 6개
         int num1, num2, num3, num4, num5, num6, sum;
-sum = 0;
+        sum = 0;
         // Random 객체 생성
         Random random = new Random();
 

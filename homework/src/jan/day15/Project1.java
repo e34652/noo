@@ -1,5 +1,6 @@
-package com.project;
+package jan.day15;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Project1 {
@@ -20,7 +21,7 @@ public class Project1 {
 		System.out.print("선택> ");
 	}
 
-	public static void menu1(Session session) {
+	public static void menu1(Session session) throws ClassNotFoundException, IOException{
 
 		while (session.isRun()) {
 			disp1();// 스태틱 메서드이므로 직접적인 호출이 가능함
@@ -34,7 +35,9 @@ public class Project1 {
 					break;
 				}
 				System.out.println("로그인 처리");
+				
 				login(session);
+				
 				break;
 			case 2:
 				// 회원 가입
@@ -62,6 +65,7 @@ public class Project1 {
 			case 5:
 				session.setMenuState(MenuState.SYSTEM_OFF);
 				System.out.println("프로그램 종료");
+				session.save();
 				break;
 
 			default:
@@ -70,7 +74,7 @@ public class Project1 {
 		}
 	}
 
-	public static void signOn(Session session) {
+	public static void signOn(Session session) throws ClassNotFoundException, IOException {
 
 		System.out.println("회원가입을 시작합니다");
 
@@ -79,14 +83,17 @@ public class Project1 {
 
 		System.out.println("사용하실 PW를 입력해주세요");
 		session.setAccountPw(scanner.nextLine());
-
+		session.setAccountBalance(0L);
+		
 		System.out.println("회원가입이 완료되었습니다");
 		System.out.printf("ID : %s\nPW : %s\n", session.getAccountId(), session.getAccountPw());
-
+		session.save();
+		
 	}
 
-	public static void login(Session session) {
+	public static void login(Session session) throws ClassNotFoundException, IOException {
 
+		session.load();
 		System.out.println("ID를 입력해주세요");
 		session.setLoginInputId(scanner.nextLine());
 
@@ -140,7 +147,7 @@ public class Project1 {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		LoginInput loginInput = new LoginInput("id", "pw");
 		Account account = new Account("id", "pw");
 //세션 클래스에 필드로 사용되는 클래스 타입의 인스턴스를 먼저 생성하고 이를 매개값으로 하여 세션 인스턴스 초기화

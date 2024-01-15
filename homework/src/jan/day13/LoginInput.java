@@ -1,13 +1,13 @@
-package jan.day12;
+package jan.day13;
 
 public class LoginInput { //로그인시 입력된 ID PW
 	String inputId;
 	String inputPw;
 
-	public LoginInput(String inputId, String inputPw) {
+	public LoginInput(String inputId, String intputPw) {
 		
 		this.inputId = inputId;
-		this.inputPw = inputPw;
+		this.inputId = inputPw;
 	}
 
 	public String getInputId() {

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Project1 {
 
 	static Scanner scanner = new Scanner(System.in); // 스태틱 필드,실행이 끝날 때까지 메모리 할당
-
+	
 	public static void disp1() { // 스태틱 메서드
 		System.out.println("---------------------------------------------");
 		System.out.println("1.로그인 | 2.회원가입 | 3.예금/출금 | 4.로그아웃 | 5.종료");
