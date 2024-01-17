@@ -1,27 +1,36 @@
-package jan.day16.banking;
+package jan.day17.banking;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Project1 {
 
-	public static void main(String[] args) {
-		List<Account> list = new ArrayList<>();
+	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		Scanner scanner = new Scanner(System.in);
-		
+		SaveLoad sl = new SaveLoad();
+		Check check = new Check();
+
+		if (check.find() == FileCheck.EXIST) {
+			sl.load();
+		}
 		boolean run = true;
 		while (run) {
 			System.out.println("-------------------------------------------");
-			System.out.println("1.회원출력 | 2.회원등록 | 3.파일저장 | 4.파일읽기 | 5.종료");
+			System.out.println("1.회원출력 | 2.회원등록 | 3.리스트 초기화 | 4.종료");
 			System.out.println("-------------------------------------------");
 			System.out.print("선택> ");
 			int menuNum = Integer.parseInt(scanner.nextLine());
 			switch (menuNum) {
 			case 1:
 				System.out.println("회원출력");
-				for (Account account : list) {
-					System.out.println(account);
+				if (sl.getList().isEmpty()) {
+					System.out.println("회원 리스트가 비어있습니다");
+				} else {
+					for (Account account : sl.getList()) {
+						System.out.println(account);
+					}
 				}
 				break;
 			case 2:
@@ -36,21 +45,21 @@ public class Project1 {
 				String tel = scanner.nextLine();
 				System.out.print("생년월일:");
 				String ssn = scanner.nextLine();
-				list.add(new Account(name, id, pass, tel, ssn));
+				sl.getList().add(new Account(name, id, pass, tel, ssn));
+				sl.save();
 				break;
 			case 3:
-				System.out.println("파일저장");
-				
+				System.out.println("리스트 초기화");
+				sl.reset();
 				break;
+
 			case 4:
-				System.out.println("파일읽기");
-				break;
-			case 5:
 				System.out.println("프로그램 종료");
 				run = false;
+				sl.save();
 				break;
 			}
 		}
-		
+
 	}
 }

@@ -4,7 +4,7 @@ public class LoginInput { //로그인시 입력된 ID PW
 	String inputId;
 	String inputPw;
 
-	public LoginInput(String inputId, String intputPw) {
+	public LoginInput(String inputId, String inputPw) {
 		
 		this.inputId = inputId;
 		this.inputId = inputPw;
