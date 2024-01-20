@@ -13,10 +13,10 @@ public class Session {
 	private LoginInput loginInput;
 	private	LoginState loginState = LoginState.OFFLINE;
 	private MenuState menuState = MenuState.TOP;
-	private Account account;
+	private Accounta account;
 
 	
-	public Session(boolean run, boolean run2, LoginInput loginInput, Account account) {
+	public Session(boolean run, boolean run2, LoginInput loginInput, Accounta account) {
 
 		this.run = run;
 		this.run2 = run2;
@@ -37,7 +37,7 @@ public class Session {
 		
 		FileInputStream fis = new FileInputStream("C:/temp/acc.db"); // 저장 경로
 		ObjectInputStream ois = new ObjectInputStream(fis); //
-		this.account = (Account) ois.readObject();
+		this.account = (Accounta) ois.readObject();
 		
 	}
 

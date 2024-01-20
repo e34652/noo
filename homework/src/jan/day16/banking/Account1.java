@@ -1,6 +1,6 @@
 package jan.day16.banking;
 
-public class Account {
+class Account1 {
 	private String name;
 	private String id;
 	private String pass;
@@ -9,7 +9,7 @@ public class Account {
 	private int balance;
 	
 	
-	public Account(String name, String id, String pass, String tel, String ssn) {
+	public Account1(String name, String id, String pass, String tel, String ssn) {
 		super();
 		this.name = name;
 		this.id = id;

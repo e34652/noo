@@ -15,8 +15,8 @@ public class LottoProject {
 	public static int[] dupCheck(int[] num) {
 
 		AAA: while (true) {
-			for (int i = 0; i < num.length - 1; i++) {
-				for (int j = i + 1; j < num.length - 1; j++) {
+			for (int i = 0; i < num.length; i++) {
+				for (int j = i + 1; j < num.length; j++) {
 					if (num[i] == (num[j])) {
 						num = getNum(num);
 						continue AAA;

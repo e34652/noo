@@ -2,7 +2,7 @@ package jan.day15;
 
 import java.io.Serializable;
 
-public class Account implements Serializable{ // 회원 정보 
+public class Accounta implements Serializable{ // 회원 정보 
 	private String accountId;
 	private String accountPw;
 	private Long balance;
@@ -37,14 +37,14 @@ public class Account implements Serializable{ // 회원 정보
 	}
 
 
-	public Account() {
+	public Accounta() {
 	}
 	
-	public Account(String accountId, String accountPw) {
+	public Accounta(String accountId, String accountPw) {
 		this(accountId, accountPw, 0L);
 	}
 	
-	public Account(String accountId, String accountPw, Long balance) {
+	public Accounta(String accountId, String accountPw, Long balance) {
 		this.accountId = accountId;
 		this.accountPw = accountPw;
 		this.balance = balance;

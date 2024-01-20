@@ -149,7 +149,7 @@ public class Project1 {
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		LoginInput loginInput = new LoginInput("id", "pw");
-		Account account = new Account("id", "pw");
+		Accounta account = new Accounta("id", "pw");
 //세션 클래스에 필드로 사용되는 클래스 타입의 인스턴스를 먼저 생성하고 이를 매개값으로 하여 세션 인스턴스 초기화
 		Session session = new Session(true, false, loginInput, account);
 //이렇게 한 클래스에 다른 클래스 정보를 연동시켜놓으면 추후 다른 메소드에 매개값을 넣을때 편하고 직관적이게 됨 

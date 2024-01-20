@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Project1 {
 
 	public static void main(String[] args) {
-		List<Account> list = new ArrayList<>();
+		List<Account1> list = new ArrayList<>();
 		Scanner scanner = new Scanner(System.in);
 		
 		boolean run = true;
@@ -20,7 +20,7 @@ public class Project1 {
 			switch (menuNum) {
 			case 1:
 				System.out.println("회원출력");
-				for (Account account : list) {
+				for (Account1 account : list) {
 					System.out.println(account);
 				}
 				break;
@@ -36,7 +36,7 @@ public class Project1 {
 				String tel = scanner.nextLine();
 				System.out.print("생년월일:");
 				String ssn = scanner.nextLine();
-				list.add(new Account(name, id, pass, tel, ssn));
+				list.add(new Account1(name, id, pass, tel, ssn));
 				break;
 			case 3:
 				System.out.println("파일저장");
