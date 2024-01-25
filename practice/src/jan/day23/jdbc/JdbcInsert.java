@@ -16,7 +16,7 @@ public class JdbcInsert {
 		Connection conn = DriverManager.getConnection(url, id, pass); // 위에 셋팅한 정보를 토대로 연결
 		Statement stmt = conn.createStatement();
 		String sql = "insert into emp values(7777, '곰문곰', '사원',7839, '2024-01-23',3000, null, 10)"; // DB에서 수행할 쿼리문 작성 
-		int result = stmt.executeUpdate(sql); // stmt로 DB에 전송해 쿼리문 수행
+		int result = stmt.executeUpdate(sql); // stmt가 실행한 쿼리문이 적용된 행의 수를 리턴
 		if(result == 1) {
 			System.out.println("입력 성공!");
 		}else {
