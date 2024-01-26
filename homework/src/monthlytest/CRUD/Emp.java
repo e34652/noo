@@ -1,17 +1,17 @@
 package monthlytest.CRUD;
 
 public class Emp {
-	private int empno;
+	private String empno;
 	private String ename;
 	private String job;
-	private int mgr;
+	private String mgr;
 	private String hiredate;
-	private double sal;
+	private String sal;
 	private String comm;
-	private int deptno;
+	private String deptno;
 	
 	
-	public Emp(int empno, String ename, String job, int mgr, String hiredate, double sal, String comm, int deptno) {
+	public Emp(String empno, String ename, String job, String mgr, String hiredate, String sal, String comm, String deptno) {
 		super();
 		this.empno = empno;
 		this.ename = ename;
@@ -24,7 +24,7 @@ public class Emp {
 	}
 	
 	
-	public int getEmpno() {
+	public String getEmpno() {
 		return empno;
 	}
 	
@@ -36,7 +36,7 @@ public class Emp {
 		return job;
 	}
 	
-	public int getMgr() {
+	public String getMgr() {
 		return mgr;
 	}
 	
@@ -44,7 +44,7 @@ public class Emp {
 		return hiredate;
 	}
 	
-	public double getSal() {
+	public String getSal() {
 		return sal;
 	}
 	
@@ -52,15 +52,54 @@ public class Emp {
 		return comm;
 	}
 	
-	public int getDeptno() {
+	public String getDeptno() {
 		return deptno;
+	}
+
+	public void setEmpno(String empno) {
+		this.empno = empno;
+	}
+
+
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+
+
+	public void setJob(String job) {
+		this.job = job;
+	}
+
+
+	public void setMgr(String mgr) {
+		this.mgr = mgr;
+	}
+
+
+	public void setHiredate(String hiredate) {
+		this.hiredate = hiredate;
+	}
+
+
+	public void setSal(String sal) {
+		this.sal = sal;
+	}
+
+
+	public void setComm(String comm) {
+		this.comm = comm;
+	}
+
+
+	public void setDeptno(String deptno) {
+		this.deptno = deptno;
 	}
 
 
 	@Override
 	public String toString() {
-		return empno + "\t" + ename + "\t" + job + "\t" + mgr + "\t" + hiredate
-				+ "\t" + sal + "\t" + comm + "\t" + deptno;
+		return empno + " | " + ename + " | " + job + " | " + mgr + " | " + hiredate
+				+ " | " + sal + " | " + comm + " | " + deptno;
 	}
 
 	
