@@ -7,10 +7,10 @@ public class Job implements Column{
 	@Override
 	public void update(String empno, Statement stmt) {
 		String column = "job";
-		System.out.println("수정할 정보 = 직책");
-		System.out.println("부서코드를 입력해주세요\n>");
+		System.out.println("수정할 정보 = 직무");
+		System.out.println("직무를 입력해 주세요\n>");
 		String value = scan.nextLine();
-		String sql = String.format("update emp set %s = %s where empno = %s;", column, value); 
+		String sql = String.format("update emp set %s = %s where empno = %s;", column, value, empno); 
 		try {
 			int result = stmt.executeUpdate(sql);
 			if(result == 1)

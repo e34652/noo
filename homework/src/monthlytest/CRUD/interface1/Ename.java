@@ -10,7 +10,7 @@ public class Ename implements Column{
 	public void update(String empno, Statement stmt) {
 		String column = "ename";
 		System.out.println("수정할 정보 = 이름");
-		System.out.println("이름을 입력해주세요\n>");
+		System.out.println("이름을 입력해 주세요\n>");
 		String value = scan.nextLine();
 		String sql = String.format("update emp set %s = '%s' where empno = %s;", column, value, empno); 
 		try {

@@ -10,7 +10,7 @@ public class Comm implements Column {
 		try {
 		String column = "comm";
 		System.out.println("수정할 정보 = 수당");
-		System.out.println("수당을 입력해주세요\n>");
+		System.out.println("수당을 입력해 주세요\n>");
 		String value = scan.nextLine();
 		String sql = String.format("update emp set %s = %s where empno = %s;", column, value, empno);
 		

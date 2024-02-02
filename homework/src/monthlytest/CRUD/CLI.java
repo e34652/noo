@@ -99,7 +99,7 @@ public class CLI {
 					sql = String.format("select * from emp where empno = '%s' and ename = '%s'", empno, ename);
 					rs = stmt.executeQuery(sql);
 					if (rs.next()) {
-						while (rs.next()) {
+						
 							String job = rs.getString("job");
 							String mgr = rs.getString("mgr");
 							String hiredate = rs.getString("hiredate");
@@ -109,7 +109,7 @@ public class CLI {
 							str = String.format(
 									"사번 : %s | 이름 : %s | 직무 : %s | 사수 : %s | 입사일 : %s | 급여 : %s | 수당 : %s | 부서 코드 : %s",
 									empno, ename, job, mgr, hiredate, sal, comm, deptno);
-						}
+					
 						System.out.println(str);
 						CLI.read2(conn, stmt, ename, empno);
 

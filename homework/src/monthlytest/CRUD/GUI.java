@@ -486,16 +486,22 @@ public class GUI extends JFrame {
 					switch (tf11.getText()) {
 					case "1":
 						column = "ename";
+						break;
 					case "2":
 						column = "job";
+						break;
 					case "3":
 						column = "mgr";
+						break;
 					case "4":
 						column = "sal";
+						break;
 					case "5":
 						column = "comm";
+						break;
 					case "6":
 						column = "deptno";
+						break;
 					}
 					String empno = tf1.getText();
 					String sql = String.format("update emp set %s = '%s' where empno = %s", column, tf22.getText(),

@@ -7,12 +7,13 @@ public class Deptno implements Column{
 
 	@Override
 	public void update(String empno, Statement stmt) {
+		try {
 		String column = "deptno";
 		System.out.println("수정할 정보 = 부서코드");
-		System.out.println("부서코드를 입력해주세요\n>");
+		System.out.println("부서코드를 입력해 주세요\n>");
 		String value = scan.nextLine();
-		String sql = String.format("update emp set %s = %s where empno = %s;", column, value); 
-		try {
+		String sql = String.format("update emp set %s = %s where empno = %s;", column, value, empno); 
+		
 			int result = stmt.executeUpdate(sql);
 			if(result == 1)
 				System.out.println("수정 성공");

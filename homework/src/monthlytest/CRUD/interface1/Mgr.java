@@ -8,9 +8,9 @@ public class Mgr implements Column{
 	public void update(String empno, Statement stmt) {
 		String column = "mgr";
 		System.out.println("수정할 정보 = 사수코드");
-		System.out.println("사수코드를 입력해주세요\n>");
+		System.out.println("사수코드를 입력해 주세요\n>");
 		String value = scan.nextLine();
-		String sql = String.format("update emp set %s = %s where empno = %s;", column, value); 
+		String sql = String.format("update emp set %s = %s where empno = %s;", column, value, empno); 
 		try {
 			int result = stmt.executeUpdate(sql);
 			if(result == 1)

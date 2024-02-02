@@ -28,7 +28,7 @@ public class CLI2 {
 
 			while (run) {
 				System.out.println("----------------------------------------------------------");
-				System.out.println("1.데이터 조회 | 2.데이터 추가 | 3. 종료");
+				System.out.println("1.데이터 조회 | 2. 종료");
 				System.out.println("----------------------------------------------------------");
 				System.out.println("원하시는 업무를 선택해 주세요\n>");
 				menuNum = scan.nextLine();
@@ -39,11 +39,8 @@ public class CLI2 {
 					System.out.println("데이터 조회를 시작합니다");
 					CLI2.read(conn, stmt);
 					break;
+
 				case "2":
-					System.out.println("데이터 추가를 시작합니다");
-					CLI2.create(conn, stmt);
-					break;
-				case "3":
 					System.out.println("프로그램을 종료합니다");
 					run = false;
 					break;
@@ -136,7 +133,7 @@ public class CLI2 {
 		boolean run3 = true;
 		while (run3) {
 			System.out.println("--------------------------------------");
-			System.out.println("1.데이터 수정 | 2.데이터 삭제 | 3.이전");
+			System.out.println("1.데이터 수정 | 2.이전");
 			System.out.println("--------------------------------------");
 			System.out.println("현재 선택된 사번:" + empno);
 			System.out.println("원하시는 업무를 선택해 주세요\n>");
@@ -149,10 +146,6 @@ public class CLI2 {
 				CLI2.update(con, stmt, empno);
 				break;
 			case "2":
-				System.out.println("조회된 회원 정보를 삭제합니다");
-				CLI2.delete(con, stmt, ename, empno);
-				return;
-			case "3":
 				System.out.println("돌아갑니다");
 				run3 = false;
 				break;
@@ -165,6 +158,12 @@ public class CLI2 {
 		String sValue = "";
 		String sql = "";
 		Update update = new Update();
+		Ename enam = new Ename();
+		Job job = new Job();
+		Mgr mgr = new Mgr();
+		Sal sal = new Sal();
+		Comm comm = new Comm();
+		Deptno deptno = new Deptno();
 
 		boolean run4 = true;
 		while (run4) {
@@ -178,32 +177,26 @@ public class CLI2 {
 
 			switch (column) {
 			case "1":
-				Ename enam = new Ename();
 				update.Update(enam, empno, stmt);
 				break;
 
 			case "2":
-				Job job = new Job();
 				update.Update(job, empno, stmt);
 				break;
 
 			case "3":
-				Mgr mgr = new Mgr();
 				update.Update(mgr, empno, stmt);
 				break;
 
 			case "4":
-				Sal sal = new Sal();
 				update.Update(sal, empno, stmt);
 				break;
 
 			case "5":
-				Comm comm = new Comm();
 				update.Update(comm, empno, stmt);
 				break;
 
 			case "6":
-				Deptno deptno = new Deptno();
 				update.Update(deptno, empno, stmt);
 				break;
 
@@ -218,109 +211,6 @@ public class CLI2 {
 			}
 
 		}
-	}
-
-	static void delete(Connection conn, Statement stmt, String ename, String empno) {
-
-		try {
-			String sql = String.format("delete from emp where ename = '%s' and empno = '%s'", ename, empno);
-
-			int result = stmt.executeUpdate(sql); // stmt로 DB에 전송해 쿼리문 수행
-
-			if (result >= 1) { // 몇번 실행되었나, 실행된 행의 개수, 레코드의 수
-				System.out.println("삭제 성공");
-			} else {
-				System.out.println("삭제 실패");
-			}
-		} catch (SQLException e) {
-			System.out.println("올바른 값을 입력해주세요");
-		}
-
-	}
-
-	static void create(Connection conn, Statement stmt) {
-
-		try {
-
-			System.out.printf("사번을 입력해 주세요\n>");
-			int empno = Integer.parseInt(scan.nextLine());
-
-			System.out.print("이름을 입력해 주세요\n>");
-			String ename = scan.nextLine();
-
-			System.out.print("직무를 입력해 주세요\n>");
-			String job = scan.nextLine();
-
-			System.out.print("사수 코드를 입력해 주세요\n>");
-			int mgr = Integer.parseInt(scan.nextLine());
-
-			System.out.println("입사일을 입력해 주세요");
-			System.out.print("연> ");
-			String year = scan.nextLine();
-			if (year.length() == 2 && Integer.parseInt(year) > 24) {
-				year = "19" + year;
-			} else if (year.length() == 2 && Integer.parseInt(year) <= 24) {
-				year = "20" + year;
-			} else if (year.length() != 2 || year.length() != 4) {
-				System.out.println("입사년도를 바르게 입력해 주세요");
-				return;
-			}
-
-			System.out.print("월> ");
-			String month = scan.nextLine();
-
-			if (Integer.parseInt(month) > 12) {
-				System.out.println("입사한 달을 정확히 입력해 주세요");
-				return;
-			}
-			if (Integer.parseInt(month) < 10) {
-				month = "0" + month;
-			}
-
-			System.out.print("일> ");
-			String day = scan.nextLine();
-			if (Integer.parseInt(day) > 31) {
-				System.out.println("입사일을 정확히 입력해 주세요");
-			}
-			if (Integer.parseInt(day) < 10) {
-				day = "0" + day;
-			}
-
-			String hiredate = year + '-' + month + "-" + day;
-			System.out.println(hiredate);
-
-			System.out.print("급여를 입력해 주세요\n>");
-			String sal = scan.nextLine();
-
-			System.out.print("수당을 입력해 주세요\n>");
-			String comm = scan.nextLine();
-
-			System.out.print("부서 코드를 입력해 주세요\n>");
-			String deptno = scan.nextLine();
-			if (deptno.length() > 2) {
-				System.out.println("부서 코드는 2자리 수로 입력해 주세요");
-				return;
-			}
-
-			String str = String.format(
-					"사번 : %s | 이름 : %s | 직무 : %s | 사수 : %s | 입사일 : %s | 급여 : %s | 수당 : %s | 부서 코드 : %s", empno, ename,
-					job, mgr, hiredate, sal, comm, deptno);
-
-			String sql = String.format("insert into emp values (%s, '%s', '%s', %s, '%s', %s, %s, %s)", empno, ename,
-					job, mgr, hiredate, sal, comm, deptno);
-
-			int result = stmt.executeUpdate(sql);
-
-			if (result == 1) {
-				System.out.println("추가 성공\n" + str);
-			} else {
-				System.out.println("추가 실패");
-			}
-
-		} catch (SQLException e) {
-			System.out.println("올바른 값을 입력해 주세요");
-		}
-
 	}
 
 	public static void main(String[] args) {
